@@ -56,7 +56,8 @@ resource "aws_s3_bucket_public_access_block" "main" {
 }
 
 resource "aws_iam_user" "azure" {
-  name = "AzureADF"
+  name          = "AzureADF"
+  force_destroy = true
 }
 
 resource "aws_iam_user_policy_attachment" "azure_s3_fullaccess" {
