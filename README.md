@@ -15,9 +15,12 @@ Generate the dummy data:
 bash generateDummyData.sh
 ```
 
-Upload the files to AWS:
+Upload the files to AWS S3:
 
 ```sh
 # Change the bucket name
-aws s3 sync ./dummydata s3://{your-bucket-name}/data
+aws s3 sync ./dummydata s3://YOUR_BUCKET/data
+
+# List objects
+aws s3 ls s3://YOUR_BUCKET --recursive --human-readable --summarize
 ```
