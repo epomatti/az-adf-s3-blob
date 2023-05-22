@@ -2,6 +2,8 @@
 
 Copying files from AWS S3 to Azure Blob (ADLS Gen2) using ADF.
 
+<img src=".assets/adf.png" width=500 />
+
 Create the infrastructure:
 
 ```sh
