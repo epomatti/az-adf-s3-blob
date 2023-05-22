@@ -8,7 +8,7 @@ variable "azure_location" {
   default = "eastus"
 }
 
-variable "workoad" {
+variable "workload" {
   type    = string
   default = "pluralsight"
 }

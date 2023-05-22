@@ -18,5 +18,6 @@ bash generateDummyData.sh
 Upload the files to AWS:
 
 ```sh
-aws s3 sync ./dummydata s3://your-bucket-name 
+# Change the bucket name
+aws s3 sync ./dummydata s3://{your-bucket-name}/data
 ```
