@@ -24,3 +24,5 @@ aws s3 sync ./dummydata s3://YOUR_BUCKET/data
 # List objects
 aws s3 ls s3://YOUR_BUCKET --recursive --human-readable --summarize
 ```
+
+To finish the process, log in to ADF and create a copy pipeline.

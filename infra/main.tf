@@ -55,6 +55,19 @@ resource "aws_s3_bucket_public_access_block" "main" {
   restrict_public_buckets = true
 }
 
+resource "aws_iam_user" "azure" {
+  name = "AzureADF"
+}
+
+resource "aws_iam_access_key" "azure" {
+  user = aws_iam_user.azure.name
+}
+
+resource "aws_iam_user_policy_attachment" "azure_s3_fullaccess" {
+  user       = aws_iam_user.azure.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+}
+
 ###########################
 ########## Azure ##########
 ###########################
@@ -99,4 +112,11 @@ resource "azurerm_data_factory" "default" {
   name                = "adf${local.affix}"
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
+}
+
+resource "azurerm_data_factory_linked_service_data_lake_storage_gen2" "lake" {
+  name                = "Lake"
+  data_factory_id     = azurerm_data_factory.default.id
+  url                 = "https://${azurerm_storage_account.lake.name}.dfs.core.windows.net"
+  storage_account_key = azurerm_storage_account.lake.primary_access_key
 }
