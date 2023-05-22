@@ -59,10 +59,6 @@ resource "aws_iam_user" "azure" {
   name = "AzureADF"
 }
 
-resource "aws_iam_access_key" "azure" {
-  user = aws_iam_user.azure.name
-}
-
 resource "aws_iam_user_policy_attachment" "azure_s3_fullaccess" {
   user       = aws_iam_user.azure.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
